@@ -385,12 +385,11 @@
                     </div>
 
                     <!-- Contact Form -->
-                    <form action="https://formsubmit.co/lawrencetayson@gmail.com" method="POST" class="space-y-4">
-                        <!-- FormSubmit Configuration -->
-                        <input type="hidden" name="_subject" value="New Portfolio Contact Message!">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_template" value="table">
-                        <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+                    <form id="contactForm" class="space-y-4">
+                        <!-- Web3Forms Access Key -->
+                        <input type="hidden" name="access_key" value="7c0b4336-ce40-49d3-8ebd-ab8a94b91c77">
+                        <input type="hidden" name="subject" value="New Portfolio Contact from Website">
+                        <input type="hidden" name="from_name" value="Portfolio Contact Form">
                         
                         <input 
                             type="text" 
@@ -415,10 +414,12 @@
                         ></textarea>
                         <button 
                             type="submit" 
+                            id="submitBtn"
                             class="w-full bg-white text-indigo-600 py-3 rounded-lg font-semibold hover:bg-indigo-50 transition shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                         >
                             Send Message
                         </button>
+                        <div id="result" class="hidden text-center py-3 px-4 rounded-lg"></div>
                     </form>
                 </div>
             </div>
@@ -432,6 +433,65 @@
             <p class="text-sm text-gray-500 mt-2">Built with passion and dedication</p>
         </div>
     </footer>
+
+    <script>
+        // Web3Forms Contact Form Handler
+        const form = document.getElementById('contactForm');
+        const result = document.getElementById('result');
+        const submitBtn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+            
+            // Show loading state
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            result.innerHTML = '';
+            result.classList.add('hidden');
+
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: json
+                });
+                
+                const jsonResponse = await response.json();
+                
+                if (response.status === 200) {
+                    result.innerHTML = '✅ Thank you! Your message has been sent successfully!';
+                    result.classList.remove('hidden', 'bg-red-500/30', 'border-red-300');
+                    result.classList.add('bg-green-500/30', 'border', 'border-green-300', 'text-white');
+                    form.reset();
+                } else {
+                    console.log(jsonResponse);
+                    result.innerHTML = '❌ Something went wrong. Please try again.';
+                    result.classList.remove('hidden', 'bg-green-500/30', 'border-green-300');
+                    result.classList.add('bg-red-500/30', 'border', 'border-red-300', 'text-white');
+                }
+            } catch (error) {
+                console.log(error);
+                result.innerHTML = '❌ Something went wrong. Please try again.';
+                result.classList.remove('hidden', 'bg-green-500/30', 'border-green-300');
+                result.classList.add('bg-red-500/30', 'border', 'border-red-300', 'text-white');
+            } finally {
+                submitBtn.textContent = 'Send Message';
+                submitBtn.disabled = false;
+                
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    result.classList.add('hidden');
+                }, 5000);
+            }
+        });
+    </script>
 
 </body>
 </html>
