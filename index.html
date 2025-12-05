@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>John Lawrence Tayson | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         html {
             scroll-behavior: smooth;
@@ -14,379 +15,421 @@
             transition: color 0.3s;
         }
         .nav-link:hover {
-            color: #6366f1;
+            color: #818cf8;
         }
         .section-title {
             font-size: 3rem;
             font-weight: 300;
             letter-spacing: 0.3rem;
         }
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .profile-img {
+            border: 6px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
     </style>
 </head>
 <body class="bg-white text-gray-800">
     
     <!-- Navigation -->
-    <nav class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-8 py-6">
+    <nav class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
+        <div class="max-w-7xl mx-auto px-8 py-4">
             <div class="flex justify-between items-center">
-                <div class="text-2xl font-light tracking-wider">
-                    <span class="block text-sm">J L</span>
-                    <span class="block text-xs -mt-1">TAYSON</span>
+                <div class="text-2xl font-bold tracking-wider text-indigo-600">
+                    JLT
                 </div>
-                <div class="flex space-x-8 text-sm tracking-wider">
+                <div class="flex space-x-8 text-sm tracking-wider font-medium">
+                    <a href="#home" class="nav-link">HOME</a>
                     <a href="#about" class="nav-link">ABOUT</a>
                     <a href="#projects" class="nav-link">PROJECTS</a>
                     <a href="#skills" class="nav-link">SKILLS</a>
-                    <a href="#resume" class="nav-link">RESUME</a>
                     <a href="#contact" class="nav-link">CONTACT</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="min-h-screen flex items-center justify-center pt-20 px-8">
-        <div class="text-center max-w-4xl">
-            <div class="mb-8">
-                <h1 class="text-7xl font-light tracking-widest mb-4">
-                    <span class="block">J L</span>
-                    <span class="block text-6xl mt-2">TAYSON</span>
-                </h1>
+    <!-- Hero Section with Cover Photo & Profile -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Cover Photo Background with Gradient -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600"></div>
+            <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMC41IiBvcGFjaXR5PSIwLjIiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-40"></div>
+            
+            <!-- Floating Shapes -->
+            <div class="absolute top-20 left-20 w-64 h-64 bg-white/10 rounded-full blur-3xl float-animation"></div>
+            <div class="absolute bottom-20 right-20 w-96 h-96 bg-white/10 rounded-full blur-3xl float-animation" style="animation-delay: 2s;"></div>
+        </div>
+        
+        <!-- Content -->
+        <div class="relative z-10 text-center max-w-4xl px-8 pt-16">
+            <!-- Profile Picture -->
+            <div class="mb-8 flex justify-center">
+                <div class="relative">
+                    <div class="w-40 h-40 rounded-full overflow-hidden profile-img bg-white flex items-center justify-center">
+                        <img src="images/projects/profile.png" alt="Profile" class="w-full h-full object-cover">
+                    </div>
+
+                    <div class="absolute -bottom-2 -right-2 w-12 h-12 bg-green-400 rounded-full border-4 border-white flex items-center justify-center">
+                        <span class="text-white text-xs">✓</span>
+                    </div>
+                </div>
             </div>
-            <p class="text-xl mb-4 tracking-wide text-gray-600">Hi, I'm</p>
-            <h2 class="text-4xl font-light mb-6 tracking-wide">John Lawrence Tayson</h2>
-            <p class="text-2xl text-indigo-600 mb-8 tracking-wide">Web & Mobile Developer</p>
-            <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-12 leading-relaxed">
-                Driven to design, develop, and deliver impactful systems.
+
+            <h1 class="text-6xl md:text-7xl font-bold tracking-tight mb-4 text-white">
+                John Lawrence Tayson
+            </h1>
+            <p class="text-2xl md:text-3xl text-indigo-200 mb-6 font-light">Web & Mobile Developer</p>
+            <p class="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-12 leading-relaxed">
+                Driven to design, develop, and deliver impactful systems that make a difference.
             </p>
-            <div class="space-x-6">
-                <a href="#contact" class="inline-block border-2 border-gray-800 px-8 py-3 hover:bg-gray-800 hover:text-white transition tracking-wider text-sm">
-                    CONTACT ME
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#contact" class="inline-block bg-white text-indigo-600 px-8 py-4 rounded-full hover:bg-indigo-50 transition font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    Get In Touch
                 </a>
-                <a href="#projects" class="inline-block border-2 border-indigo-600 text-indigo-600 px-8 py-3 hover:bg-indigo-600 hover:text-white transition tracking-wider text-sm">
-                    VIEW MY PROJECTS
+                <a href="#projects" class="inline-block border-2 border-white text-white px-8 py-4 rounded-full hover:bg-white hover:text-indigo-600 transition font-semibold">
+                    View My Work
                 </a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-8 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold mb-4 text-gray-800">About Me</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6 text-gray-600 leading-relaxed">
+                    <p class="text-lg">
+                        A passionate web and mobile developer currently pursuing a Bachelor of Science in Information Technology 
+                        at <span class="font-semibold text-indigo-600">Bulacan State University</span>, specializing in Web and Mobile Development.
+                    </p>
+                    <p>
+                        I'm driven by the desire to create solutions that make everyday tasks easier, especially for 
+                        educational purposes and community services. My journey has taken me through various projects from 
+                        mobile applications using React Native and Android Studio to web platforms built with modern technologies.
+                    </p>
+                    <p>
+                        Through academic projects and hands-on experience, I've developed a strong foundation in backend development, 
+                        mobile app creation, and user interface design. I'm dedicated to continuous learning and always eager 
+                        to explore new technologies that can help me build better solutions.
+                    </p>
+                </div>
+                <div class="bg-gradient-to-br from-indigo-100 to-purple-100 p-8 rounded-2xl">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold">
+                                <i class="fa-solid fa-user-graduate text-2xl"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-800">Education</p>
+                                <p class="text-sm text-gray-600">BS Information Technology</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center text-white font-bold">
+                                <i class="fa-solid fa-location-dot text-2xl"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-800">Location</p>
+                                <p class="text-sm text-gray-600">Hagonoy, Bulacan</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-pink-600 rounded-lg flex items-center justify-center text-white font-bold">
+                                <i class="fa-solid fa-bullseye text-2xl"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-800">Focus</p>
+                                <p class="text-sm text-gray-600">Web & Mobile Development</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold">
+                                <i class="fa-solid fa-calendar-days text-2xl"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-800">Graduation</p>
+                                <p class="text-sm text-gray-600">Expected 2026</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Featured Projects Section -->
-    <section id="projects" class="py-32 px-8 bg-gray-50">
+    <section id="projects" class="py-24 px-8 bg-gradient-to-br from-gray-50 to-indigo-50">
         <div class="max-w-7xl mx-auto">
-            <h2 class="section-title text-center mb-20 text-gray-800">FEATURED PROJECTS</h2>
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold mb-4 text-gray-800">Featured Projects</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto mb-4"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Explore my latest work in web and mobile development</p>
+            </div>
             
-            <div class="space-y-24">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
                 <!-- Project 1 - TriVoca -->
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div class="aspect-video rounded-lg overflow-hidden shadow-lg">
-                            <img src="images/projects/trivoca.png" alt="TriVoca App Screenshot" class="w-full h-full object-cover">
-                        </div>
+                <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-48 flex items-center justify-center bg-gray-100">
+                        <img src="images/projects/trivoca.png" alt="TriVoca" class="h-full w-full object-cover">
                     </div>
-                    <div>
-                        <h3 class="text-3xl font-light mb-4 tracking-wide">TRIVOCA ENTRY LEVEL: LANGUAGE PROFICIENCY EXAM SIMULATOR</h3>
-                        <p class="text-gray-600 mb-6 leading-relaxed">
-                            A comprehensive mobile application for entry-level language proficiency exam preparation (JLPT-N5, TOPIK-1, HSK-1). 
-                            Features timed exam simulations with performance analytics and speech practice using text-to-speech/speech-to-text technology. 
-                            Implemented cloud database for secure user data storage and cross-platform compatibility.
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-gray-800">TriVoca Entry Level</h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            Language proficiency exam simulator for JLPT-N5, TOPIK-1, and HSK-1 with timed exams, 
+                            performance analytics, and speech practice features.
                         </p>
-                        <div class="flex gap-4 mb-4">
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-700 text-xs rounded-full">React Native</span>
-                            <span class="px-3 py-1 bg-purple-100 text-purple-700 text-xs rounded-full">Node.js</span>
-                            <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">TypeScript</span>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-indigo-100 text-indigo-700 text-xs rounded-full font-medium">React Native</span>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 text-xs rounded-full font-medium">Node.js</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs rounded-full font-medium">TypeScript</span>
                         </div>
-                        <div class="flex gap-4 mb-6 text-sm">
-                            <div>
-                                <p class="text-gray-500 tracking-wider">YEAR</p>
-                                <p class="font-medium">2024</p>
-                            </div>
-                            <div>
-                                <p class="text-gray-500 tracking-wider">ROLE</p>
-                                <p class="font-medium">Developer</p>
-                            </div>
+                        <div class="flex justify-between text-sm text-gray-500">
+                            <span>2025</span>
+                            <span class="font-semibold text-indigo-600">Backend Developer</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project 2 - TechPartners -->
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div class="order-2 md:order-1">
-                        <h3 class="text-3xl font-light mb-4 tracking-wide">TECHPARTNERS E-COMMERCE PLATFORM</h3>
-                        <p class="text-gray-600 mb-6 leading-relaxed">
-                            E-commerce marketplace for mobile phone parts and accessories including LCDs, batteries, and camera lenses. 
-                            Developed mobile application with product catalog and purchasing functionality for users and businesses 
-                            seeking replacement parts for smartphones.
-                        </p>
-                        <div class="flex gap-4 mb-4">
-                            <span class="px-3 py-1 bg-green-100 text-green-700 text-xs rounded-full">Android Studio</span>
-                            <span class="px-3 py-1 bg-teal-100 text-teal-700 text-xs rounded-full">Java</span>
-                        </div>
-                        <div class="flex gap-4 mb-6 text-sm">
-                            <div>
-                                <p class="text-gray-500 tracking-wider">YEAR</p>
-                                <p class="font-medium">2024</p>
-                            </div>
-                            <div>
-                                <p class="text-gray-500 tracking-wider">ROLE</p>
-                                <p class="font-medium">Developer</p>
-                            </div>
-                        </div>
+                <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-48 flex items-center justify-center bg-gray-100">
+                        <img src="images/projects/techpartners.png" alt="TechPartners" class="h-full w-full object-cover">
                     </div>
-                    <div class="bg-gradient-to-br from-blue-100 to-cyan-100 aspect-video rounded-lg flex items-center justify-center order-1 md:order-2">
-                        <div class="text-center text-gray-500">
-                            <svg class="w-24 h-24 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-                            </svg>
-                            <p class="text-sm tracking-wider">TECHPARTNERS SCREENSHOT</p>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-gray-800">TechPartners E-Commerce</h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            E-commerce marketplace for mobile phone parts and accessories with product catalog 
+                            and purchasing functionality.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-green-100 text-green-700 text-xs rounded-full font-medium">Android Studio</span>
+                            <span class="px-3 py-1 bg-teal-100 text-teal-700 text-xs rounded-full font-medium">Java</span>
+                        </div>
+                        <div class="flex justify-between text-sm text-gray-500">
+                            <span>2024</span>
+                            <span class="font-semibold text-green-600">FullStack Developer</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project 3 - BLAST -->
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div class="bg-gradient-to-br from-green-100 to-emerald-100 aspect-video rounded-lg flex items-center justify-center">
-                        <div class="text-center text-gray-500">
-                            <svg class="w-24 h-24 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
-                            </svg>
-                            <p class="text-sm tracking-wider">BLAST SCREENSHOT</p>
-                        </div>
+                <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-48 flex items-center justify-center bg-gray-100">
+                        <img src="images/projects/blast.png" alt="BLAST" class="h-full w-full object-cover">
                     </div>
-                    <div>
-                        <h3 class="text-3xl font-light mb-4 tracking-wide">BLAST E-COMMERCE WEB APPLICATION</h3>
-                        <p class="text-gray-600 mb-6 leading-relaxed">
-                            Web-based e-commerce platform for merchandise pre-orders with promotional campaigns and discount features. 
-                            Built complete frontend and backend system with user authentication, product management, and shopping cart functionality.
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-gray-800">BLAST E-Commerce Web</h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            Web-based e-commerce platform for merchandise pre-orders with promotional campaigns 
+                            and discount features.
                         </p>
-                        <div class="flex gap-4 mb-4">
-                            <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs rounded-full">HTML</span>
-                            <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">CSS</span>
-                            <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-xs rounded-full">JavaScript</span>
-                            <span class="px-3 py-1 bg-purple-100 text-purple-700 text-xs rounded-full">PHP</span>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs rounded-full font-medium">HTML</span>
+                            <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-xs rounded-full font-medium">JavaScript</span>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 text-xs rounded-full font-medium">PHP</span>
                         </div>
-                        <div class="flex gap-4 mb-6 text-sm">
-                            <div>
-                                <p class="text-gray-500 tracking-wider">YEAR</p>
-                                <p class="font-medium">2024</p>
-                            </div>
-                            <div>
-                                <p class="text-gray-500 tracking-wider">ROLE</p>
-                                <p class="font-medium">Backend Developer</p>
-                            </div>
+                        <div class="flex justify-between text-sm text-gray-500">
+                            <span>2024</span>
+                            <span class="font-semibold text-orange-600">Backend Developer</span>
                         </div>
                     </div>
                 </div>
 
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-32 px-8 bg-white">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid md:grid-cols-2 gap-16 items-start">
-                <div>
-                    <h2 class="section-title mb-8 text-gray-800">ABOUT ME</h2>
-                    <p class="text-xl mb-4 tracking-wide">Hi, I'm</p>
-                    <h3 class="text-3xl font-light mb-8 tracking-wide">John Lawrence Tayson</h3>
-                </div>
-                <div class="text-gray-600 leading-relaxed space-y-4">
-                    <p>
-                        A web and mobile developer currently pursuing a Bachelor of Science in Information Technology 
-                        at Bulacan State University, specializing in Web and Mobile Development. Expected to graduate in 2026.
-                    </p>
-                    <p>
-                        I'm passionate about developing solutions that make everyday tasks easier, especially for 
-                        educational purposes and community services. My journey has taken me through various projects—from 
-                        mobile applications using React Native and Android Studio to web platforms built with modern technologies.
-                    </p>
-                    <p>
-                        Through academic projects and hands-on experience, I've developed skills in backend development, 
-                        mobile app creation, and user interface design. I'm dedicated to continuous learning and always eager 
-                        to explore new technologies and frameworks that can help me build better solutions.
-                    </p>
-                </div>
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-32 px-8 bg-gray-50">
+    <section id="skills" class="py-24 px-8 bg-white">
         <div class="max-w-6xl mx-auto">
-            <h2 class="section-title text-center mb-20 text-gray-800">SKILLS</h2>
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold mb-4 text-gray-800">Skills & Expertise</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto mb-4"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Technologies and tools I work with</p>
+            </div>
             
-            <div class="grid md:grid-cols-2 gap-16">
-                <!-- Technical Skills -->
-                <div>
-                    <h3 class="text-2xl font-light mb-8 tracking-wide">TECHNICAL SKILLS</h3>
-                    <div class="space-y-6">
-                        <div>
-                            <p class="text-gray-700 mb-2 tracking-wide">Programming Languages</p>
-                            <p class="text-gray-500 text-sm">JavaScript, TypeScript, Python, C++, HTML, CSS</p>
-                        </div>
-                        <div>
-                            <p class="text-gray-700 mb-2 tracking-wide">Frameworks & Libraries</p>
-                            <p class="text-gray-500 text-sm">React Native, Node.js, Bootstrap, Tailwind CSS</p>
-                        </div>
-                        <div>
-                            <p class="text-gray-700 mb-2 tracking-wide">Mobile Development</p>
-                            <p class="text-gray-500 text-sm">React Native, Android Studio</p>
-                        </div>
-                        <div>
-                            <p class="text-gray-700 mb-2 tracking-wide">Database & Backend</p>
-                            <p class="text-gray-500 text-sm">Firebase, SQL, XAMPP</p>
-                        </div>
-                        <div>
-                            <p class="text-gray-700 mb-2 tracking-wide">Design Tools</p>
-                            <p class="text-gray-500 text-sm">Adobe Photoshop, Figma, Sketch, Canva</p>
-                        </div>
-                        <div>
-                            <p class="text-gray-700 mb-2 tracking-wide">Development Tools</p>
-                            <p class="text-gray-500 text-sm">Git, VS Code</p>
-                        </div>
-                        <div>
-                            <p class="text-gray-700 mb-2 tracking-wide">Networking</p>
-                            <p class="text-gray-500 text-sm">Network Configuration, Cisco Network Defense</p>
-                        </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Frontend -->
+                <div class="bg-gradient-to-br from-indigo-50 to-purple-50 p-8 rounded-2xl">
+                    <div class="text-4xl mb-4"> <i class="fa-solid fa-palette"></i></div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Frontend</h3>
+                    <div class="space-y-2 text-gray-600">
+                        <p>• React Native</p>
+                        <p>• HTML/CSS/JavaScript</p>
+                        <p>• TypeScript</p>
+                        <p>• Tailwind CSS</p>
+                        <p>• Bootstrap</p>
                     </div>
                 </div>
 
-                <!-- Soft Skills -->
-                <div>
-                    <h3 class="text-2xl font-light mb-8 tracking-wide">OTHER SKILLS</h3>
-                    <div class="space-y-3 text-gray-600">
-                        <p>• MS Office Suite & Google Workspace</p>
-                        <p>• MS Teams</p>
-                        <p>• Problem Solving & Analytical Thinking</p>
-                        <p>• Communication & Presentation Skills</p>
-                        <p>• Time Management</p>
-                        <p>• Adaptability & Willingness to Learn</p>
-                        <p>• Attention to Detail</p>
-                        <p>• Team Collaboration</p>
-                        <p>• Continuous Learning Mindset</p>
+                <!-- Backend -->
+                <div class="bg-gradient-to-br from-green-50 to-teal-50 p-8 rounded-2xl">
+                    <div class="text-4xl mb-4"><i class="fa-solid fa-gear"></i></div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Backend</h3>
+                    <div class="space-y-2 text-gray-600">
+                        <p>• Node.js</p>
+                        <p>• PHP</p>
+                        <p>• Python</p>
+                        <p>• Firebase</p>
+                        <p>• SQL</p>
+                    </div>
+                </div>
+
+                <!-- Tools & Others -->
+                <div class="bg-gradient-to-br from-orange-50 to-pink-50 p-8 rounded-2xl">
+                    <div class="text-4xl mb-4"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Tools & Design</h3>
+                    <div class="space-y-2 text-gray-600">
+                        <p>• Git & VS Code</p>
+                        <p>• Figma & Adobe PS</p>
+                        <p>• Android Studio</p>
+                        <p>• Network Config</p>
+                        <p>• MS Office Suite</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Resume Section -->
-    <section id="resume" class="py-32 px-8 bg-white">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="section-title text-center mb-20 text-gray-800">RESUME</h2>
-            
-            <div class="space-y-16">
-                
-                <!-- Education -->
-                <div>
-                    <h3 class="text-2xl font-light mb-8 tracking-wider border-b pb-4">EDUCATION</h3>
-                    
-                    <div class="space-y-8">
-                        <div>
-                            <h4 class="text-xl font-medium mb-2">BACHELOR OF SCIENCE IN INFORMATION TECHNOLOGY</h4>
-                            <p class="text-gray-600 mb-1">Bulacan State University</p>
-                            <p class="text-gray-500 text-sm mb-1">Specialization: Web and Mobile Development</p>
-                            <p class="text-gray-500 text-sm">2022 - Present (Expected Graduation: 2026)</p>
-                        </div>
-
-                        <div>
-                            <h4 class="text-xl font-medium mb-2">SENIOR HIGH SCHOOL - ICT STRAND</h4>
-                            <p class="text-gray-600 mb-1">Victory Global Technological College Inc.</p>
-                            <p class="text-gray-500 text-sm">2020 - 2022</p>
-                        </div>
+            <!-- Certifications -->
+            <div class="mt-16">
+                <h3 class="text-3xl font-bold mb-8 text-center text-gray-800">Certifications</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white border-2 border-indigo-200 p-6 rounded-xl hover:shadow-lg transition">
+                        <p class="font-semibold text-gray-800 mb-2">Cisco Networking Academy</p>
+                        <p class="text-sm text-gray-600">Network Defense & Cyber Threat Management</p>
+                    </div>
+                    <div class="bg-white border-2 border-purple-200 p-6 rounded-xl hover:shadow-lg transition">
+                        <p class="font-semibold text-gray-800 mb-2">Digital Upskill</p>
+                        <p class="text-sm text-gray-600">IT for Sustainable Community Development</p>
+                    </div>
+                    <div class="bg-white border-2 border-pink-200 p-6 rounded-xl hover:shadow-lg transition">
+                        <p class="font-semibold text-gray-800 mb-2">POSHED to Excellence</p>
+                        <p class="text-sm text-gray-600">Web Development & Career Growth</p>
                     </div>
                 </div>
-
-                <!-- Certifications -->
-                <div>
-                    <h3 class="text-2xl font-light mb-8 tracking-wider border-b pb-4">CERTIFICATIONS</h3>
-                    
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div class="border-l-2 border-indigo-600 pl-4">
-                            <p class="font-medium mb-1">Cisco Networking Academy: Network Defense & Cyber Threat Management</p>
-                            <p class="text-sm text-gray-500">Course Completion</p>
-                        </div>
-                        <div class="border-l-2 border-indigo-600 pl-4">
-                            <p class="font-medium mb-1">DIGITAL UPSKILL</p>
-                            <p class="text-sm text-gray-500">IT for Sustainable Community Development</p>
-                        </div>
-                        <div class="border-l-2 border-indigo-600 pl-4">
-                            <p class="font-medium mb-1">POSHED to Excellence: Web Development & Career Growth</p>
-                            <p class="text-sm text-gray-500">Seminars</p>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-32 px-8 bg-gray-50">
-        <div class="max-w-6xl mx-auto">
+    <section id="contact" class="py-24 px-8 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 text-white">
+        <div class="max-w-4xl mx-auto">
             <div class="text-center mb-16">
-                <h2 class="section-title mb-8 text-gray-800">CONTACT ME</h2>
-                <h3 class="text-2xl font-light tracking-wide mb-4">Let's work together</h3>
-                <p class="text-gray-600 max-w-2xl mx-auto">
-                    I'm glad you've visited my personal portfolio website. If you have any questions, 
-                    suggestions, or would like to collaborate, feel free to contact me through this form.
+                <h2 class="text-5xl font-bold mb-4">Let's Work Together</h2>
+                <div class="w-24 h-1 bg-white mx-auto mb-4"></div>
+                <p class="text-indigo-100 text-lg">
+                    Have a project in mind? Let's connect and create something amazing!
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-16">
-                <!-- Contact Info -->
-                <div class="space-y-6">
-                    <div>
-                        <p class="text-sm text-gray-500 tracking-wider mb-1">EMAIL</p>
-                        <p class="text-lg">lawrencetayson@gmail.com</p>
+            <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 md:p-12">
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <!-- Contact Info -->
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <span class="text-2xl"><i class="fa-solid fa-envelope text-2xl"></i></span>
+                            </div>
+                            <div>
+                                <p class="font-semibold mb-1">Email</p>
+                                <p class="text-indigo-100">lawrencetayson@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <span class="text-2xl"><i class="fa-solid fa-phone text-2xl"></i></span>
+                            </div>
+                            <div>
+                                <p class="font-semibold mb-1">Phone</p>
+                                <p class="text-indigo-100">+639815833820</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <span class="text-2xl"><i class="fa-solid fa-location-dot text-2xl"></i></span>
+                            </div>
+                            <div>
+                                <p class="font-semibold mb-1">Location</p>
+                                <p class="text-indigo-100">Sitio Buga, Santa Elena<br>Hagonoy, Bulacan</p>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <p class="text-sm text-gray-500 tracking-wider mb-1">PHONE</p>
-                        <p class="text-lg">+639815833820</p>
-                    </div>
-                    <div>
-                        <p class="text-sm text-gray-500 tracking-wider mb-1">LOCATION</p>
-                        <p class="text-lg">Sitio Buga, Santa Elena, Hagonoy, Bulacan</p>
-                    </div>
-                </div>
 
-                <!-- Contact Form -->
-                <form class="space-y-4">
-                    <input 
-                        type="text" 
-                        placeholder="Enter your name" 
-                        class="w-full px-4 py-3 border border-gray-300 focus:outline-none focus:border-indigo-600 transition"
-                    >
-                    <input 
-                        type="email" 
-                        placeholder="Enter your email" 
-                        class="w-full px-4 py-3 border border-gray-300 focus:outline-none focus:border-indigo-600 transition"
-                    >
-                    <input 
-                        type="text" 
-                        placeholder="Enter your subject" 
-                        class="w-full px-4 py-3 border border-gray-300 focus:outline-none focus:border-indigo-600 transition"
-                    >
-                    <textarea 
-                        placeholder="Enter your message" 
-                        rows="5" 
-                        class="w-full px-4 py-3 border border-gray-300 focus:outline-none focus:border-indigo-600 transition"
-                    ></textarea>
-                    <button 
-                        type="submit" 
-                        class="w-full bg-gray-800 text-white py-3 hover:bg-gray-700 transition tracking-wider"
-                    >
-                        SUBMIT
-                    </button>
-                </form>
+                    <!-- Contact Form -->
+                    <form action="https://formsubmit.co/lawrencetayson@gmail.com" method="POST" class="space-y-4">
+                        <!-- FormSubmit Configuration -->
+                        <input type="hidden" name="_subject" value="New Portfolio Contact Message!">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+                        
+                        <input 
+                            type="text" 
+                            name="name"
+                            placeholder="Your Name" 
+                            required
+                            class="w-full px-4 py-3 rounded-lg bg-white/20 backdrop-blur-sm border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 transition"
+                        >
+                        <input 
+                            type="email" 
+                            name="email"
+                            placeholder="Your Email" 
+                            required
+                            class="w-full px-4 py-3 rounded-lg bg-white/20 backdrop-blur-sm border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 transition"
+                        >
+                        <textarea 
+                            name="message"
+                            placeholder="Your Message" 
+                            rows="4" 
+                            required
+                            class="w-full px-4 py-3 rounded-lg bg-white/20 backdrop-blur-sm border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 transition resize-none"
+                        ></textarea>
+                        <button 
+                            type="submit" 
+                            class="w-full bg-white text-indigo-600 py-3 rounded-lg font-semibold hover:bg-indigo-50 transition shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                        >
+                            Send Message
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-white border-t border-gray-200 py-8 px-8">
+    <footer class="bg-gray-900 text-white py-8 px-8">
         <div class="max-w-6xl mx-auto text-center">
-            <p class="text-sm text-gray-500 tracking-wider">©2025 by John Lawrence Tayson</p>
+            <p class="text-gray-400">© 2025 John Lawrence Tayson. All rights reserved.</p>
+            <p class="text-sm text-gray-500 mt-2">Built with passion and dedication</p>
         </div>
     </footer>
 
