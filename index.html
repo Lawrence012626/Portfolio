@@ -24,6 +24,7 @@
         }
         .project-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
         }
         .project-card:hover {
             transform: translateY(-8px);
@@ -42,6 +43,102 @@
         }
         .float-animation {
             animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            animation: fadeIn 0.3s ease;
+        }
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            animation: slideIn 0.3s ease;
+        }
+        .modal-image {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .close-modal:hover {
+            color: #818cf8;
+        }
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 50px;
+            cursor: pointer;
+            padding: 20px;
+            user-select: none;
+            transition: color 0.3s;
+        }
+        .nav-arrow:hover {
+            color: #818cf8;
+        }
+        .nav-arrow.left {
+            left: 20px;
+        }
+        .nav-arrow.right {
+            right: 20px;
+        }
+        .thumbnail-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .thumbnail {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            cursor: pointer;
+            border-radius: 4px;
+            opacity: 0.6;
+            transition: opacity 0.3s, transform 0.3s;
+            border: 2px solid transparent;
+        }
+        .thumbnail:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        .thumbnail.active {
+            opacity: 1;
+            border-color: #818cf8;
         }
     </style>
 </head>
@@ -189,7 +286,7 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
                 <!-- TriVoca Project -->
-                <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg">
+                <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg" onclick="openModal('trivoca')">
                     <div class="h-48 flex items-center justify-center bg-gray-100">
                         <img src="images/projects/trivoca.png" alt="TriVoca" class="h-full w-full object-cover">
                     </div>
@@ -208,11 +305,14 @@
                             <span>2025</span>
                             <span class="font-semibold text-indigo-600">Backend Developer</span>
                         </div>
+                        <div class="mt-4 text-indigo-600 text-sm font-semibold">
+                            <i class="fa-solid fa-images mr-2"></i>Click to view screenshots
+                        </div>
                     </div>
                 </div>
 
                 <!-- TechPartners Project -->
-                <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg">
+                <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg" onclick="openModal('techpartners')">
                     <div class="h-48 flex items-center justify-center bg-gray-100">
                         <img src="images/projects/techpartners.png" alt="TechPartners" class="h-full w-full object-cover">
                     </div>
@@ -230,11 +330,14 @@
                             <span>2024</span>
                             <span class="font-semibold text-green-600">FullStack Developer</span>
                         </div>
+                        <div class="mt-4 text-green-600 text-sm font-semibold">
+                            <i class="fa-solid fa-images mr-2"></i>Click to view screenshots
+                        </div>
                     </div>
                 </div>
 
                 <!-- BLAST Project -->
-                <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg">
+                <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg" onclick="openModal('blast')">
                     <div class="h-48 flex items-center justify-center bg-gray-100">
                         <img src="images/projects/blast.png" alt="BLAST" class="h-full w-full object-cover">
                     </div>
@@ -253,11 +356,14 @@
                             <span>2024</span>
                             <span class="font-semibold text-orange-600">Backend Developer</span>
                         </div>
+                        <div class="mt-4 text-orange-600 text-sm font-semibold">
+                            <i class="fa-solid fa-images mr-2"></i>Click to view screenshots
+                        </div>
                     </div>
                 </div>
 
                 <!-- IP Mapping System - OJT Project -->
-                <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg">
+                <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg" onclick="openModal('ipmapping')">
                     <div class="h-48 flex items-center justify-center bg-gray-100">
                         <img src="images/projects/ipmapping.png" alt="IP Mapping System" class="h-full w-full object-cover">
                     </div>
@@ -276,11 +382,14 @@
                             <span>2026</span>
                             <span class="font-semibold text-blue-600">OJT Project</span>
                         </div>
+                        <div class="mt-4 text-blue-600 text-sm font-semibold">
+                            <i class="fa-solid fa-images mr-2"></i>Click to view screenshots
+                        </div>
                     </div>
                 </div>
 
                 <!-- HR Ticketing System - OJT Project -->
-                <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg">
+                <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg" onclick="openModal('hrticket')">
                     <div class="h-48 flex items-center justify-center bg-gray-100">
                         <img src="images/projects/hrticket.png" alt="HR Ticketing System" class="h-full w-full object-cover">
                     </div>
@@ -299,12 +408,26 @@
                             <span>2026</span>
                             <span class="font-semibold text-indigo-600">OJT Project • Ongoing</span>
                         </div>
+                        <div class="mt-4 text-indigo-600 text-sm font-semibold">
+                            <i class="fa-solid fa-images mr-2"></i>Click to view screenshots
+                        </div>
                     </div>
                 </div>
 
             </div>
         </div>
     </section>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <span class="nav-arrow left" onclick="changeImage(-1)">&#10094;</span>
+        <span class="nav-arrow right" onclick="changeImage(1)">&#10095;</span>
+        <div class="modal-content">
+            <img id="modalImage" class="modal-image" src="" alt="Project Screenshot">
+            <div class="thumbnail-container" id="thumbnailContainer"></div>
+        </div>
+    </div>
 
     <section id="skills" class="py-24 px-8 bg-white">
         <div class="max-w-6xl mx-auto">
@@ -463,6 +586,7 @@
     </footer>
 
     <script>
+        // Contact Form Handler
         const form = document.getElementById('contactForm');
         const result = document.getElementById('result');
         const submitBtn = document.getElementById('submitBtn');
@@ -512,6 +636,108 @@
                 setTimeout(() => {
                     result.classList.add('hidden');
                 }, 5000);
+            }
+        });
+
+        // Modal Image Gallery
+        const projectImages = {
+            trivoca: [
+                'images/projects/trivoca.png',
+                'images/projects/trivoca-1.png',
+                'images/projects/trivoca-2.png',
+                'images/projects/trivoca-3.png'
+            ],
+            techpartners: [
+                'images/projects/techpartners.png',
+                'images/projects/techpartners-1.png',
+                'images/projects/techpartners-2.png',
+                'images/projects/techpartners-3.png'
+            ],
+            blast: [
+                'images/projects/blast.png',
+                'images/projects/blast-1.png',
+                'images/projects/blast-2.png',
+                'images/projects/blast-3.png'
+            ],
+            ipmapping: [
+                'images/projects/ipmapping.png',
+                'images/projects/ipmapping-1.png',
+                'images/projects/ipmapping-2.png',
+                'images/projects/ipmapping-3.png'
+            ],
+            hrticket: [
+                'images/projects/hrticket.png',
+                'images/projects/hrticket-1.png',
+                'images/projects/hrticket-2.png',
+                'images/projects/hrticket-3.png'
+            ]
+        };
+
+        let currentProject = '';
+        let currentImageIndex = 0;
+
+        function openModal(project) {
+            currentProject = project;
+            currentImageIndex = 0;
+            showImage();
+            document.getElementById('imageModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function changeImage(direction) {
+            const images = projectImages[currentProject];
+            currentImageIndex += direction;
+            
+            if (currentImageIndex >= images.length) {
+                currentImageIndex = 0;
+            } else if (currentImageIndex < 0) {
+                currentImageIndex = images.length - 1;
+            }
+            
+            showImage();
+        }
+
+        function showImage() {
+            const images = projectImages[currentProject];
+            const modalImage = document.getElementById('modalImage');
+            const thumbnailContainer = document.getElementById('thumbnailContainer');
+            
+            modalImage.src = images[currentImageIndex];
+            
+            // Create thumbnails
+            thumbnailContainer.innerHTML = '';
+            images.forEach((img, index) => {
+                const thumb = document.createElement('img');
+                thumb.src = img;
+                thumb.className = 'thumbnail' + (index === currentImageIndex ? ' active' : '');
+                thumb.onclick = () => {
+                    currentImageIndex = index;
+                    showImage();
+                };
+                thumbnailContainer.appendChild(thumb);
+            });
+        }
+
+        // Close modal on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            } else if (e.key === 'ArrowLeft') {
+                changeImage(-1);
+            } else if (e.key === 'ArrowRight') {
+                changeImage(1);
+            }
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('imageModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
             }
         });
     </script>
